@@ -45,13 +45,13 @@ The results in the paper above can be reproduced by the following MATLAB scripts
 # References
 [1] Mongia, Aanchal, Debarka Sengupta, and Angshul Majumdar. "McImpute: Matrix completion based imputation for single cell RNA-seq data." Frontiers in genetics 10 (2019): 9.
 
-[2]Mongia, Aanchal, Debarka Sengupta, and Angshul Majumdar. "deepMc: Deep Matrix Completion for Imputation of Single-Cell RNA-seq Data." Journal of Computational Biology (2019).
+[2] Mongia, Aanchal, Debarka Sengupta, and Angshul Majumdar. "deepMc: Deep Matrix Completion for Imputation of Single-Cell RNA-seq Data." Journal of Computational Biology (2019).
 
 [3] Ezzat, Ali, et al. "Drug-target interaction prediction with graph regularized matrix factorization." IEEE/ACM transactions on computational biology and bioinformatics 14.3 (2016): 646-656.
 
 [4] Mongia, Aanchal, and Angshul Majumdar. "Drug-target interaction prediction using Multi Graph Regularized Nuclear Norm Minimization." Plos one 15.1 (2020): e0226484.
 
-[5]Mongia, Aanchal, Emilie Chouzenoux, and Angshul Majumdar. "Computational prediction of Drug-Disease association based on Graph-regularized one bit Matrix completion." bioRxiv (2020).
+[5] Mongia, Aanchal, Emilie Chouzenoux, and Angshul Majumdar. "Computational prediction of Drug-Disease association based on Graph-regularized one bit Matrix completion." bioRxiv (2020).
  
  
 
