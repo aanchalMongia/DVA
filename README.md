@@ -14,10 +14,25 @@ The raw data can be found at: `./data_raw/database.xlsx`. The processed data has
 
 ![DVA-pipeline](./helper_functions/DVA.png)
 
-The computational algorithms used to predict drug-virus association are available in: `helper_functions/alg_template`
+The computational algorithms used to predict drug-virus association are available in: `helper_functions/alg_template`.
+These are:
+* Nuclear Norm Minimization based matrix completion 
+* Matrix Facrorization based matrix completion 
+* Deep matrix factorization 
+* Graph regularized matrix factorization 
+* Graph regularized matrix completion 
+* Graph regularized binary matrix completion 
 
 The results in the paper above can be reproduced by the follwing MATLAB scripts:
 
 * `run.m`
 * `./Experiments/novel_drugs_prediction.m`
 * `./Experiments/coronavirus_pred.m`
+
+
+
+[4]
+
+[5]
+
+[6]
