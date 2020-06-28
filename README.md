@@ -12,7 +12,7 @@ This repository (DVA) has:
 The raw data can be foundat: `./data_raw/database.xlsx`. The processed data has been created using the notebook `read_database.ipynb`. A schemetic view of the DVA database curation and association prediction using it has been shown below.
 
 
-![DVA-pipeline](./helper_functions/DVA.png){height:"50%" ;width:"50%"}
+![DVA-pipeline](./helper_functions/DVA.png)
 
 The computational algorithms used to predict drug-virus association are available in: `helper_functions/alg_template`
 
