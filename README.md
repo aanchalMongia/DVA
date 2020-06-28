@@ -29,16 +29,29 @@ The raw data can be found at: `./data_raw/database.xlsx`. The processed data has
 
 The computational algorithms used to predict drug-virus association are available in: `helper_functions/alg_template`.
 These are:
-* Nuclear Norm Minimization based matrix completion 
-* Matrix Facrorization based matrix completion 
-* Deep matrix factorization 
-* Graph regularized matrix factorization 
-* Graph regularized matrix completion 
-* Graph regularized binary matrix completion 
+* Nuclear Norm Minimization based matrix completion [1]
+* Matrix Facrorization based matrix completion [1]
+* Deep matrix factorization [2]
+* Graph regularized matrix factorization [3]
+* Graph regularized matrix completion [4]
+* Graph regularized binary matrix completion [5]
 
 The results in the paper above can be reproduced by the following MATLAB scripts:
 
 * `run.m`
 * `./Experiments/novel_drugs_prediction.m`
 * `./Experiments/coronavirus_pred.m`
+
+# References
+[1] Mongia, Aanchal, Debarka Sengupta, and Angshul Majumdar. "McImpute: Matrix completion based imputation for single cell RNA-seq data." Frontiers in genetics 10 (2019): 9.
+
+[2]Mongia, Aanchal, Debarka Sengupta, and Angshul Majumdar. "deepMc: Deep Matrix Completion for Imputation of Single-Cell RNA-seq Data." Journal of Computational Biology (2019).
+
+[3] Ezzat, Ali, et al. "Drug-target interaction prediction with graph regularized matrix factorization." IEEE/ACM transactions on computational biology and bioinformatics 14.3 (2016): 646-656.
+
+[4] Mongia, Aanchal, and Angshul Majumdar. "Drug-target interaction prediction using Multi Graph Regularized Nuclear Norm Minimization." Plos one 15.1 (2020): e0226484.
+
+[5]Mongia, Aanchal, Emilie Chouzenoux, and Angshul Majumdar. "Computational prediction of Drug-Disease association based on Graph-regularized one bit Matrix completion." bioRxiv (2020).
+ 
+ 
 
