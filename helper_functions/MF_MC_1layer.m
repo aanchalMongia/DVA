@@ -55,16 +55,7 @@ out;
           X = U*V;
           x = X(:);
         
-        %{
-          MA=mean(abs(M_te(full(:),1)- M_te(X(:),1)))
-        if(MA<min)
-              min=MA;
-            Xfinal=X;
-          
-        end
-        %}
-        %cost=[cost; norm( X_train - U*V,'fro')];
+       
 end
-%plot(1:outsweep,cost);
-  %save('Xfinal.mat','Xfinal');
+
 end
