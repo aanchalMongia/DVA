@@ -1,15 +1,15 @@
 # DVA
 **Computational methods for drug re-positioning identify potential anti-virals treatments against COVID-19**
 
-Aanchal Mongia, Emilie Chouzenoux, Angshul Majumdar
+Aanchal Mongia (IIIT Delhi), Emilie Chouzenoux (OPIS, Inria Saclay), Angshul Majumdar (IIIT Delhi)
 
 
-This repository (DVA) has:
+TThis repository (DVA) contains::
 *  DVA (Drug virus association database)
-* Collection of matrix completion based computational technqiues to predict anti-viral drug prediction for viruses
+* Collection of matrix completion based computational techniques to predict anti-viral drug prediction for viruses
 
 
-The raw data can be foundat: `./data_raw/database.xlsx`. The processed data has been created using the notebook `read_database.ipynb`. A schemetic view of the DVA database curation and association prediction using it has been shown below.
+The raw data can be found at: `./data_raw/database.xlsx`. The processed data has been created using the notebook `read_database.ipynb`. A schematic view of the DVA database curation and association prediction using it has been shown below.
 
 
 ![DVA-pipeline](./helper_functions/DVA.png)
