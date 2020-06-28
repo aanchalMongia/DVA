@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    <title>Virus Bacteria Interaction Prediction</title>
+    <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/css/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/jqwidgets/styles/jqx.base.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/css/custom_new.css">
+    
+    <script type="text/javascript" src="lib/js/d3.js"></script>
+    <script type="text/javascript" src="lib/js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="lib/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/js/math.min.js"></script>
+    <script type="text/javascript" src="lib/jqwidgets/jqx-all.js"></script>
+</head>
+
+
+<body>
+	
+<div id="tooltip1" class="hidden"><p><span id="value"></div>
+
+<div id="container-id-1" style="width: 1670px; height: 1000px; clear: both;">
+	<div class="sidebar_wrapper" style="float: left; width: 300px; height: 1000px; overflow: hidden; display: block; border-right: 1px solid grey;">
+		<div class="title_section">
+			<img class="title_image" src="logo.jpg" alt="" style="width: 290px; margin-left: 2px; margin-top: 5px;">
+		</div>
+		
+		<div class="reorder_section" style="margin: 1px; margin-top: 10px; padding:2px; font-size: 11px; border: 0.5px solid grey;">
+			<div id='jqxWidget'><label>Select the Virus for visualization: </label><div id="listbox"></div></div>
+			
+			<div class="opacity_slider_container" style="margin-top: 5px;">
+				<div ><label for="topAmount"># of top Hosts: </label><input type="text" value="25" id="topAmount" readonly style="border:0; font-weight:bold; width: 50px;"></div>
+				<div id="topSlider" style="width: 290px;"></div>
+			</div>
+			<div class="opacity_slider_container" style="margin-top: 5px;">
+				<div ><label for="cutoffAmount">Max distance &lt;= </label><input type="text" value="1" id="cutoffAmount" readonly style="border:0; font-weight:bold; width: 50px;"></div>
+				<div id="cutoffSlider" style="width: 290px;"></div>
+			</div>
+			<div class="btn-group gene_search_button" data-toggle="buttons" style="margin-top: 10px;">
+				<div><button id="okBtn" class="sidebar_text btn btn-primary submit_gene_button" type="button" disabled="true" onclick="updateData()" style="float: left; padding-top: 6px; padding-bottom: 6px;">OK</button></div>
+			</div>
+		</div>
+	</div>
+	<div id="vizcontainer" style="float: left; width: 1000px; height: 800px; overflow: auto; ">
+		<svg id="heatCanvas"></svg> 
+	</div>
+	<div style="float: left;margin-left: 20px; margin-top: 50px; ">
+		<div><b>Consensus Information</b></div>
+		<div id="consensusSuperkingdom"></div>
+		<div id="consensusPhylum"></div>
+		<div id="consensusClass"></div>
+		<div id="consensusOrder"></div>
+		<div id="consensusFamily"></div>
+		<div id="consensusGenus"></div>
+		<div id="consensusSpecies"></div>
+	</div>
+</div>
+
+
+<footer id="footer_div" class="footer navbar-fixed-bottom">
+    <div class="row"><div class="col-xs-12 footer_section"><p class="text-muted">Copyright (C) 2016 Yang Lu &lt;<a href="mailto:ylu465@usc.edu">ylu465@usc.edu</a>&gt; @ Computational and Molecular Biology, Department of Biological Science, University of Southern California, LA, CA 90089, USA </p></div></div>
+</footer>
+
+<script type="text/javascript">
+	var margin = {top: 200, right: 10, bottom: 10, left: 200};
+   var colors = ['#91003F','#9B1A53','#A63467','#B14F7C','#BB6990','#C684A4','#D19EB9','#DBB9CD','#E6D3E1','#F1EEF6','#FFFFFF'];
+   
+   var virusNameIdxMap = new Object(), hostNameIdxMap = new Object();   
+   var topHostNum = 50, cutoff = 1;
+   var checkedVirusIdxArr = [], checkedVirusArr = [], hostArr = [], edgeData =[];
+   var virusNameArr = ["NC_019843.3.fasta", "NC_004297.0.fasta", "NC_001802.1.fasta", "NC_001722.1.fasta", "NC_002023.0.fasta", "NC_004718.3.fasta", "NC_006998.1.fasta", "AC_000017.1.fasta", "NC_003977.2.fasta", "NC_012532.1.fasta", "NC_045512.2.fasta", "NC_038312.1.fasta", "NC_002728.1.fasta", "NC_006273.2.fasta", "NC_001803.1.fasta", "NC_009333.1.fasta", "NC_001348.1.fasta", "NC_001798.2.fasta", "NC_001538.1.fasta", "NC_001355.1.fasta", "NC_001436.1.fasta", "NC_005219.1.fasta", "NC_001430.1.fasta", "NC_001906.3.fasta", "NC_038311.1.fasta", "NC_010415.1.fasta", "NC_001731.1.fasta", "JX276378.1.fasta", "NC_006307.0.fasta", "NC_001806.2.fasta", "NC_001796.2.fasta", "NC_001611.1.fasta", "NC_003443.1.fasta", "NC_001664.4.fasta", "NC_002549.1.fasta", "NC_004102.1.fasta", "NC_002204.0.fasta", "NC_007605.1.fasta", "NC_004162.2.fasta"];
+var hostNameArr = ["NC_019843.3.fasta", "NC_004297.0.fasta", "NC_001802.1.fasta", "NC_001722.1.fasta", "NC_002023.0.fasta", "NC_004718.3.fasta", "NC_006998.1.fasta", "AC_000017.1.fasta", "NC_003977.2.fasta", "NC_012532.1.fasta", "NC_045512.2.fasta", "NC_038312.1.fasta", "NC_002728.1.fasta", "NC_006273.2.fasta", "NC_001803.1.fasta", "NC_009333.1.fasta", "NC_001348.1.fasta", "NC_001798.2.fasta", "NC_001538.1.fasta", "NC_001355.1.fasta", "NC_001436.1.fasta", "NC_005219.1.fasta", "NC_001430.1.fasta", "NC_001906.3.fasta", "NC_038311.1.fasta", "NC_010415.1.fasta", "NC_001731.1.fasta", "JX276378.1.fasta", "NC_006307.0.fasta", "NC_001806.2.fasta", "NC_001796.2.fasta", "NC_001611.1.fasta", "NC_003443.1.fasta", "NC_001664.4.fasta", "NC_002549.1.fasta", "NC_004102.1.fasta", "NC_002204.0.fasta", "NC_007605.1.fasta", "NC_004162.2.fasta"];
+var virusHostMat = [[1.66533e-16,0.498139,0.494818,0.511275,0.488514,0.447387,0.481688,0.52072,0.497872,0.506264,0.430445,0.495296,0.498687,0.485665,0.502189,0.477869,0.489153,0.497774,0.483458,0.479717,0.481444,0.494048,0.496441,0.488915,0.491219,0.498389,0.496742,0.487338,0.510341,0.459898,0.491532,0.478728,0.501013,0.513645,0.494108,0.506008,0.496796,0.503931,0.491833],
+[0.498139,-2.22045e-16,0.493002,0.49393,0.507574,0.512101,0.491864,0.510681,0.493588,0.491023,0.498012,0.501247,0.493646,0.523174,0.50874,0.49851,0.485538,0.515031,0.514599,0.505611,0.503573,0.511781,0.485043,0.494844,0.49448,0.5009,0.498482,0.506846,0.484337,0.490818,0.487991,0.495976,0.482599,0.503594,0.492852,0.497849,0.500479,0.495639,0.492521],
+[0.494818,0.493002,-1.11022e-16,0.457109,0.500671,0.484029,0.492756,0.503556,0.504163,0.492951,0.504832,0.503502,0.501432,0.51516,0.498964,0.518527,0.502208,0.483216,0.506182,0.481507,0.485367,0.505165,0.495235,0.50605,0.502504,0.499789,0.523629,0.498061,0.486521,0.491508,0.499723,0.486589,0.502987,0.490499,0.498571,0.510389,0.494188,0.500251,0.493987],
+[0.511275,0.49393,0.457109,-1.11022e-16,0.480726,0.497361,0.492128,0.481504,0.510409,0.492629,0.482297,0.486349,0.4971,0.50284,0.486814,0.508389,0.491829,0.500771,0.501697,0.488961,0.479322,0.480501,0.495189,0.491347,0.495875,0.51184,0.479202,0.481725,0.501676,0.489885,0.467477,0.491376,0.49087,0.504824,0.506267,0.490708,0.479936,0.506873,0.486409],
+[0.488514,0.507574,0.500671,0.480726,2.22045e-16,0.500052,0.533359,0.50751,0.514355,0.482616,0.514251,0.497752,0.50183,0.506758,0.497974,0.475682,0.499694,0.496179,0.500344,0.495239,0.520067,0.513678,0.508861,0.494623,0.491615,0.494108,0.491637,0.486969,0.483126,0.49822,0.498506,0.527795,0.491043,0.510979,0.528604,0.511705,0.482077,0.509617,0.49634],
+[0.447387,0.512101,0.484029,0.497361,0.500052,-2.22045e-16,0.49833,0.506429,0.497897,0.480669,0.352687,0.468847,0.487483,0.488634,0.497424,0.494938,0.503365,0.494629,0.481692,0.50241,0.504416,0.472223,0.484085,0.477794,0.507335,0.505341,0.496924,0.491075,0.507025,0.472995,0.502763,0.481403,0.48973,0.499777,0.495951,0.510953,0.484516,0.482484,0.494667],
+[0.481688,0.491864,0.492756,0.492128,0.533359,0.49833,5.55112e-17,0.490245,0.504679,0.488279,0.492627,0.493474,0.50201,0.487065,0.508882,0.474699,0.505049,0.494011,0.50904,0.512834,0.498998,0.493151,0.497843,0.513951,0.479392,0.486524,0.457212,0.492063,0.504648,0.482627,0.50561,0.154224,0.491438,0.492641,0.514155,0.498517,0.512652,0.477647,0.489069],
+[0.52072,0.510681,0.503556,0.481504,0.50751,0.506429,0.490245,-1.11022e-16,0.500881,0.503593,0.496244,0.503987,0.494483,0.446314,0.488508,0.47981,0.485905,0.45174,0.500932,0.508093,0.498346,0.509098,0.478308,0.505764,0.510067,0.488775,0.461781,0.500942,0.485693,0.451744,0.508036,0.485705,0.503331,0.495933,0.513742,0.48481,0.494913,0.465012,0.49077],
+[0.497872,0.493588,0.504163,0.510409,0.514355,0.497897,0.504679,0.500881,0,0.499342,0.484999,0.49657,0.498246,0.48901,0.507443,0.487027,0.505869,0.495601,0.495106,0.496363,0.498861,0.502563,0.503952,0.522343,0.501327,0.482366,0.491267,0.494897,0.498581,0.492874,0.502532,0.503491,0.512609,0.485928,0.50535,0.491864,0.503043,0.506635,0.506839],
+[0.506264,0.491023,0.492951,0.492629,0.482616,0.480669,0.488279,0.503593,0.499342,1.66533e-16,0.489557,0.49094,0.502218,0.47321,0.509137,0.472758,0.494483,0.496902,0.493601,0.501868,0.50621,0.486491,0.505555,0.507466,0.497268,0.487235,0.483389,0.503592,0.506337,0.503154,0.500018,0.489287,0.489747,0.503934,0.510256,0.493759,0.505408,0.492388,0.480511],
+[0.430445,0.498012,0.504832,0.482297,0.514251,0.352687,0.492627,0.496244,0.484999,0.489557,-1.11022e-16,0.491942,0.4965,0.479685,0.496611,0.49948,0.481683,0.501223,0.473987,0.498441,0.494938,0.504706,0.49446,0.484807,0.493234,0.500009,0.479967,0.486057,0.503412,0.476255,0.500196,0.479241,0.504845,0.49359,0.486318,0.503182,0.50128,0.50515,0.485102],
+[0.495296,0.501247,0.503502,0.486349,0.497752,0.468847,0.493474,0.503987,0.49657,0.49094,0.491942,0,0.505944,0.500053,0.48782,0.492611,0.492488,0.490223,0.489312,0.494718,0.48556,0.48733,0.467751,0.495747,0.473058,0.457318,0.511937,0.452582,0.47659,0.492741,0.488472,0.489784,0.509424,0.497803,0.503126,0.503805,0.486551,0.503204,0.481966],
+[0.498687,0.493646,0.501432,0.4971,0.50183,0.487483,0.50201,0.494483,0.498246,0.502218,0.4965,0.505944,-1.11022e-16,0.500153,0.491945,0.499015,0.508891,0.501324,0.493826,0.49696,0.495073,0.499642,0.510977,0.449353,0.508235,0.505431,0.510551,0.50335,0.477831,0.506246,0.471187,0.490103,0.469994,0.499478,0.504687,0.497909,0.497594,0.50509,0.485194],
+[0.485665,0.523174,0.51516,0.50284,0.506758,0.488634,0.487065,0.446314,0.48901,0.47321,0.479685,0.500053,0.500153,-2.22045e-16,0.493697,0.448036,0.500123,0.401533,0.499793,0.493127,0.516412,0.489769,0.498613,0.497077,0.501024,0.500625,0.411333,0.479658,0.488866,0.403902,0.499141,0.485466,0.511097,0.471532,0.512504,0.491548,0.520649,0.464169,0.490019],
+[0.502189,0.50874,0.498964,0.486814,0.497974,0.497424,0.508882,0.488508,0.507443,0.509137,0.496611,0.48782,0.491945,0.493697,-2.22045e-16,0.507132,0.471654,0.503619,0.503265,0.504136,0.505493,0.51322,0.492446,0.486871,0.514502,0.49388,0.51215,0.505141,0.495058,0.491295,0.502474,0.502651,0.495979,0.497783,0.50231,0.501183,0.479531,0.502308,0.481112],
+[0.477869,0.49851,0.518527,0.508389,0.475682,0.494938,0.474699,0.47981,0.487027,0.472758,0.49948,0.492611,0.499015,0.448036,0.507132,0,0.467006,0.447448,0.493566,0.51101,0.482542,0.495579,0.491306,0.508257,0.485498,0.485366,0.443767,0.480024,0.479445,0.429892,0.498839,0.469914,0.515713,0.492251,0.50631,0.493246,0.499502,0.463977,0.4782],
+[0.489153,0.485538,0.502208,0.491829,0.499694,0.503365,0.505049,0.485905,0.505869,0.494483,0.481683,0.492488,0.508891,0.500123,0.471654,0.467006,5.55112e-17,0.479561,0.477345,0.49139,0.502198,0.501071,0.484396,0.489496,0.507974,0.496327,0.479401,0.507175,0.503807,0.450864,0.502189,0.501,0.507333,0.466743,0.488719,0.490016,0.512408,0.493868,0.497361],
+[0.497774,0.515031,0.483216,0.500771,0.496179,0.494629,0.494011,0.45174,0.495601,0.496902,0.501223,0.490223,0.501324,0.401533,0.503619,0.447448,0.479561,1.66533e-16,0.491866,0.492802,0.496512,0.498439,0.497177,0.482689,0.498815,0.504372,0.410446,0.496188,0.486725,0.276194,0.515182,0.498232,0.494939,0.482691,0.494938,0.487772,0.498328,0.429827,0.489835],
+[0.483458,0.514599,0.506182,0.501697,0.500344,0.481692,0.50904,0.500932,0.495106,0.493601,0.473987,0.489312,0.493826,0.499793,0.503265,0.493566,0.477345,0.491866,5.55112e-17,0.479113,0.497233,0.503549,0.494546,0.490899,0.500763,0.504709,0.495411,0.494881,0.481093,0.497762,0.518996,0.51342,0.493991,0.50045,0.477675,0.490207,0.483527,0.506144,0.493175],
+[0.479717,0.505611,0.481507,0.488961,0.495239,0.50241,0.512834,0.508093,0.496363,0.501868,0.498441,0.494718,0.49696,0.493127,0.504136,0.51101,0.49139,0.492802,0.479113,-1.11022e-16,0.483225,0.492585,0.498438,0.495489,0.499961,0.4894,0.507416,0.484917,0.50848,0.486526,0.489903,0.500389,0.513654,0.48883,0.49876,0.511341,0.475999,0.478102,0.508414],
+[0.481444,0.503573,0.485367,0.479322,0.520067,0.504416,0.498998,0.498346,0.498861,0.50621,0.494938,0.48556,0.495073,0.516412,0.505493,0.482542,0.502198,0.496512,0.497233,0.483225,-2.22045e-16,0.493295,0.481692,0.504807,0.499419,0.508677,0.513295,0.497516,0.502745,0.508198,0.511458,0.507021,0.495036,0.505536,0.490555,0.520066,0.501959,0.495119,0.50804],
+[0.494048,0.511781,0.505165,0.480501,0.513678,0.472223,0.493151,0.509098,0.502563,0.486491,0.504706,0.48733,0.499642,0.489769,0.51322,0.495579,0.501071,0.498439,0.503549,0.492585,0.493295,5.55112e-17,0.492853,0.493318,0.519273,0.472321,0.511793,0.499429,0.505816,0.476006,0.497653,0.492687,0.479713,0.503815,0.503106,0.493123,0.482416,0.493368,0.485063],
+[0.496441,0.485043,0.495235,0.495189,0.508861,0.484085,0.497843,0.478308,0.503952,0.505555,0.49446,0.467751,0.510977,0.498613,0.492446,0.491306,0.484396,0.497177,0.494546,0.498438,0.481692,0.492853,5.55112e-17,0.514242,0.477189,0.455284,0.488663,0.453045,0.487923,0.49326,0.493038,0.489192,0.484594,0.503605,0.502869,0.499557,0.492621,0.490001,0.48309],
+[0.488915,0.494844,0.50605,0.491347,0.494623,0.477794,0.513951,0.505764,0.522343,0.507466,0.484807,0.495747,0.449353,0.497077,0.486871,0.508257,0.489496,0.482689,0.490899,0.495489,0.504807,0.493318,0.514242,5.55112e-17,0.500275,0.504895,0.519507,0.515776,0.486343,0.489702,0.46479,0.509991,0.484513,0.496392,0.476012,0.47195,0.512594,0.494075,0.504776],
+[0.491219,0.49448,0.502504,0.495875,0.491615,0.507335,0.479392,0.510067,0.501327,0.497268,0.493234,0.473058,0.508235,0.501024,0.514502,0.485498,0.507974,0.498815,0.500763,0.499961,0.499419,0.519273,0.477189,0.500275,5.55112e-17,0.467916,0.499937,0.480026,0.50524,0.487279,0.49377,0.485186,0.514547,0.494294,0.509446,0.494127,0.507935,0.521422,0.491467],
+[0.498389,0.5009,0.499789,0.51184,0.494108,0.505341,0.486524,0.488775,0.482366,0.487235,0.500009,0.457318,0.505431,0.500625,0.49388,0.485366,0.496327,0.504372,0.504709,0.4894,0.508677,0.472321,0.455284,0.504895,0.467916,1.66533e-16,0.492171,0.479384,0.492376,0.499131,0.496699,0.475546,0.514684,0.49445,0.522556,0.501488,0.488353,0.505849,0.49556],
+[0.496742,0.498482,0.523629,0.479202,0.491637,0.496924,0.457212,0.461781,0.491267,0.483389,0.479967,0.511937,0.510551,0.411333,0.51215,0.443767,0.479401,0.410446,0.495411,0.507416,0.513295,0.511793,0.488663,0.519507,0.499937,0.492171,0,0.492201,0.495164,0.426637,0.521512,0.46881,0.524106,0.488305,0.491436,0.468181,0.498192,0.479431,0.469464],
+[0.487338,0.506846,0.498061,0.481725,0.486969,0.491075,0.492063,0.500942,0.494897,0.503592,0.486057,0.452582,0.50335,0.479658,0.505141,0.480024,0.507175,0.496188,0.494881,0.484917,0.497516,0.499429,0.453045,0.515776,0.480026,0.479384,0.492201,2.22045e-16,0.505307,0.481003,0.505109,0.491531,0.486833,0.490636,0.518258,0.511034,0.50497,0.499932,0.484327],
+[0.510341,0.484337,0.486521,0.501676,0.483126,0.507025,0.504648,0.485693,0.498581,0.506337,0.503412,0.47659,0.477831,0.488866,0.495058,0.479445,0.503807,0.486725,0.481093,0.50848,0.502745,0.505816,0.487923,0.486343,0.50524,0.492376,0.495164,0.505307,-1.11022e-16,0.483758,0.507952,0.495069,0.503694,0.495134,0.48712,0.500634,0.467519,0.499191,0.482104],
+[0.459898,0.490818,0.491508,0.489885,0.49822,0.472995,0.482627,0.451744,0.492874,0.503154,0.476255,0.492741,0.506246,0.403902,0.491295,0.429892,0.450864,0.276194,0.497762,0.486526,0.508198,0.476006,0.49326,0.489702,0.487279,0.499131,0.426637,0.481003,0.483758,-1.11022e-16,0.502762,0.482424,0.515335,0.477702,0.499013,0.478995,0.505863,0.425109,0.487089],
+[0.491532,0.487991,0.499723,0.467477,0.498506,0.502763,0.50561,0.508036,0.502532,0.500018,0.500196,0.488472,0.471187,0.499141,0.502474,0.498839,0.502189,0.515182,0.518996,0.489903,0.511458,0.497653,0.493038,0.46479,0.49377,0.496699,0.521512,0.505109,0.507952,0.502762,-2.22045e-16,0.49488,0.487757,0.491071,0.51238,0.497575,0.516774,0.500841,0.500535],
+[0.478728,0.495976,0.486589,0.491376,0.527795,0.481403,0.154224,0.485705,0.503491,0.489287,0.479241,0.489784,0.490103,0.485466,0.502651,0.469914,0.501,0.498232,0.51342,0.500389,0.507021,0.492687,0.489192,0.509991,0.485186,0.475546,0.46881,0.491531,0.495069,0.482424,0.49488,0,0.498317,0.499102,0.523078,0.49761,0.49669,0.47248,0.491623],
+[0.501013,0.482599,0.502987,0.49087,0.491043,0.48973,0.491438,0.503331,0.512609,0.489747,0.504845,0.509424,0.469994,0.511097,0.495979,0.515713,0.507333,0.494939,0.493991,0.513654,0.495036,0.479713,0.484594,0.484513,0.514547,0.514684,0.524106,0.486833,0.503694,0.515335,0.487757,0.498317,-2.22045e-16,0.506243,0.497638,0.492983,0.511196,0.5086,0.49826],
+[0.513645,0.503594,0.490499,0.504824,0.510979,0.499777,0.492641,0.495933,0.485928,0.503934,0.49359,0.497803,0.499478,0.471532,0.497783,0.492251,0.466743,0.482691,0.50045,0.48883,0.505536,0.503815,0.503605,0.496392,0.494294,0.49445,0.488305,0.490636,0.495134,0.477702,0.491071,0.499102,0.506243,-2.22045e-16,0.515852,0.498415,0.516429,0.4867,0.498127],
+[0.494108,0.492852,0.498571,0.506267,0.528604,0.495951,0.514155,0.513742,0.50535,0.510256,0.486318,0.503126,0.504687,0.512504,0.50231,0.50631,0.488719,0.494938,0.477675,0.49876,0.490555,0.503106,0.502869,0.476012,0.509446,0.522556,0.491436,0.518258,0.48712,0.499013,0.51238,0.523078,0.497638,0.515852,1.66533e-16,0.502276,0.503602,0.490525,0.500865],
+[0.506008,0.497849,0.510389,0.490708,0.511705,0.510953,0.498517,0.48481,0.491864,0.493759,0.503182,0.503805,0.497909,0.491548,0.501183,0.493246,0.490016,0.487772,0.490207,0.511341,0.520066,0.493123,0.499557,0.47195,0.494127,0.501488,0.468181,0.511034,0.500634,0.478995,0.497575,0.49761,0.492983,0.498415,0.502276,-1.11022e-16,0.504961,0.504006,0.493847],
+[0.496796,0.500479,0.494188,0.479936,0.482077,0.484516,0.512652,0.494913,0.503043,0.505408,0.50128,0.486551,0.497594,0.520649,0.479531,0.499502,0.512408,0.498328,0.483527,0.475999,0.501959,0.482416,0.492621,0.512594,0.507935,0.488353,0.498192,0.50497,0.467519,0.505863,0.516774,0.49669,0.511196,0.516429,0.503602,0.504961,-2.22045e-16,0.50687,0.508141],
+[0.503931,0.495639,0.500251,0.506873,0.509617,0.482484,0.477647,0.465012,0.506635,0.492388,0.50515,0.503204,0.50509,0.464169,0.502308,0.463977,0.493868,0.429827,0.506144,0.478102,0.495119,0.493368,0.490001,0.494075,0.521422,0.505849,0.479431,0.499932,0.499191,0.425109,0.500841,0.47248,0.5086,0.4867,0.490525,0.504006,0.50687,-2.22045e-16,0.506692],
+[0.491833,0.492521,0.493987,0.486409,0.49634,0.494667,0.489069,0.49077,0.506839,0.480511,0.485102,0.481966,0.485194,0.490019,0.481112,0.4782,0.497361,0.489835,0.493175,0.508414,0.50804,0.485063,0.48309,0.504776,0.491467,0.49556,0.469464,0.484327,0.482104,0.487089,0.500535,0.491623,0.49826,0.498127,0.500865,0.493847,0.508141,0.506692,5.55112e-17]];
+var superkingdomArr = ["unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"];
+var phylumArr = ["unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"];
+var classArr = ["unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"];
+var orderArr = ["unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"];
+var familyArr = ["unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"];
+var genusArr = ["unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"];
+var speciesArr = ["unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"];
+var organismArr = ["unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown", "unknown"];
+
+   for(var hostIdx=0; hostIdx<hostNameArr.length; hostIdx++) hostNameIdxMap[hostNameArr[hostIdx]] = hostIdx;
+   for(var virusIdx=0; virusIdx<virusNameArr.length; virusIdx++) virusNameIdxMap[virusNameArr[virusIdx]] = virusIdx;
+   console.log("phageToHost finish loading!");
+   
+   topHostNum = Math.min(25, hostNameArr.length);
+   
+   $(function() { $( "#topSlider" ).slider({ value:25, min: 1, max: 100, step: 1, slide: function( event, ui ) { $( "#topAmount" ).val( ui.value ); topHostNum = Math.min(ui.value, hostNameArr.length);  } }); }); 
+   $(function() { $( "#cutoffSlider" ).slider({ value:1, min: 0, max: 1, step: 0.01, slide: function( event, ui ) { $( "#cutoffAmount" ).val( ui.value ); cutoff = ui.value; } }); });
+   
+   
+   $("#listbox").jqxListBox({width: 290, height: 300, source: virusNameArr, checkboxes: true, filterable: true});
+		$("#listbox").on('checkChange', function (event) {
+			var items = $("#listbox").jqxListBox('getCheckedItems');
+			checkedVirusIdxArr = []; checkedVirusArr = [];
+			$.each(items, function (index) { checkedVirusIdxArr.push(this.index); checkedVirusArr.push(this.label); });
+			
+			if(checkedVirusIdxArr.length > 0) $("#okBtn").prop('disabled', false);
+			else $("#okBtn").prop('disabled', true);
+   });
+   
+   var host2organism = [], host2superkingdom = [], host2phylum = [], host2class = [], 
+		host2order = [], host2family = [], host2genus = [], host2species = [];
+   
+   for(var t=0; t<hostNameArr.length; t++){
+   		host2organism[hostNameArr[t]] = organismArr[t];
+   		host2superkingdom[hostNameArr[t]] = superkingdomArr[t];
+   		host2phylum[hostNameArr[t]] = phylumArr[t];
+   		host2class[hostNameArr[t]] = classArr[t];
+   		host2order[hostNameArr[t]] = orderArr[t];
+   		host2family[hostNameArr[t]] = familyArr[t];
+   		host2genus[hostNameArr[t]] = genusArr[t];
+   		host2species[hostNameArr[t]] = speciesArr[t];
+	}
+	console.log("hostTaxonomy finish loading!");
+	
+	var minDist = 1, maxDist = 0, gap=0;
+	for(var rowIdx=0; rowIdx<virusHostMat.length; rowIdx++) 
+	{
+		for(var colIdx=0; colIdx<virusHostMat[0].length; colIdx++)
+		{
+			if(virusHostMat[rowIdx][colIdx]<minDist) minDist = virusHostMat[rowIdx][colIdx];
+			if(virusHostMat[rowIdx][colIdx]>maxDist) maxDist = virusHostMat[rowIdx][colIdx];
+		}
+	}
+	minDist = Math.max(0,minDist-0.1); maxDist = Math.min(1,maxDist+0.1); gap = maxDist-minDist;
+	var colorScale = d3.scale.quantile().domain([minDist,maxDist]).range(colors);
+
+	function updateData() {
+		topHostNum = Math.min(topHostNum, hostNameArr.length);
+
+		var combinedArr = new Array(virusHostMat[checkedVirusIdxArr[0]].length).fill(0);
+		for(var rowIdx=0; rowIdx<checkedVirusIdxArr.length; rowIdx++) {
+			for(var colIdx=0; colIdx<virusHostMat[checkedVirusIdxArr[rowIdx]].length; colIdx++) {
+				combinedArr[colIdx] += virusHostMat[checkedVirusIdxArr[rowIdx]][colIdx];
+			}
+		}
+		var tmpArr = combinedArr.slice(); 
+		var thres = tmpArr.sort().slice(topHostNum-1,topHostNum);
+
+		indiceArr = [];
+		for(var colIdx=0; colIdx<combinedArr.length; colIdx++) {
+			if(indiceArr.length >= topHostNum) break;
+			if(combinedArr[colIdx] <= thres) { indiceArr.push({"idx":colIdx, "dist":combinedArr[colIdx] }); }
+		}
+		
+		hostArr = []; edgeData =[];
+		for(var colIdx=0; colIdx<indiceArr.length; colIdx++) {
+			var realColIdx = indiceArr[colIdx].idx;
+			hostArr.push(hostNameArr[realColIdx]);
+			
+			for(var rowIdx=0; rowIdx<checkedVirusIdxArr.length; rowIdx++) { edgeData.push({"row":rowIdx, "col":hostArr.length-1, 
+				"value":virusHostMat[checkedVirusIdxArr[rowIdx]][realColIdx]<=cutoff?virusHostMat[checkedVirusIdxArr[rowIdx]][realColIdx]:1}); }
+		}
+		
+		pathArr = [];
+		for(var colIdx=0; colIdx<hostArr.length; colIdx++) { pathArr.push([host2superkingdom[hostArr[colIdx]],host2phylum[hostArr[colIdx]],host2class[hostArr[colIdx]],host2order[hostArr[colIdx]],host2family[hostArr[colIdx]],host2genus[hostArr[colIdx]],host2species[hostArr[colIdx]]]); }
+		//rootNode = 	convertToHierarchy(pathArr);
+		//consensusArr = getConsensusTaxonomy(rootNode); 
+		
+		$("#consensusSuperkingdom").text("Superkingdom: "+getConsensusItem(pathArr,0));
+		$("#consensusPhylum").text("Phylum: "+getConsensusItem(pathArr,1));
+		$("#consensusClass").text("Class: "+getConsensusItem(pathArr,2));
+		$("#consensusOrder").text("Order: "+getConsensusItem(pathArr,3));
+		$("#consensusFamily").text("Family: "+getConsensusItem(pathArr,4));
+		$("#consensusGenus").text("Genus: "+getConsensusItem(pathArr,5));
+		$("#consensusSpecies").text("Species: "+getConsensusItem(pathArr,6));
+		
+		var cellSize = 25, legendElementWidth = cellSize*2, 
+			width = Math.max(hostArr.length*cellSize, 1000 ), height = Math.max(checkedVirusIdxArr.length*cellSize, 700 );
+		
+		console.log();
+		
+		d3.selectAll(".canvasSvg").remove(); 
+		var svg = d3.select("#heatCanvas").style("float", "left").attr("width", width).attr("height", height)
+			.append("g").attr('class', "canvasSvg").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			
+		var rowLabels = svg.append("g").selectAll(".rowLabelg").data(checkedVirusArr).enter().append("text")
+			.text(function (d) { return d; }).attr("x", 0).attr("y", function (d, i) { return i * cellSize; })
+      		.style("text-anchor", "end").attr("transform", "translate(-6," + cellSize / 1.5 + ")")
+      		.attr("class", function (d,i) { return "rowLabel mono r"+i;} ) ;
+      		
+      	var colLabels = svg.append("g").selectAll(".colLabelg").data(hostArr).enter().append("text")
+      		.text(function (d) { return d; }).attr("x", 0).attr("y", function (d, i) { return i * cellSize; })
+      		.style("text-anchor", "left").attr("transform", "translate("+cellSize/2 + ",-6) rotate (-90)")
+      		.attr("class",  function (d,i) { return "colLabel mono c"+i;} );
+      	
+      	var heatMap = svg.append("g").attr("class","g3").selectAll(".cellg").data(edgeData).enter().append("rect")
+			.attr("x", function(d) { return d.col * cellSize; }).attr("y", function(d) { return d.row * cellSize; })
+        	.attr("class", function(d){return "cell cell-border cr"+(d.row)+" cc"+(d.col);})
+        	.attr("width", cellSize).attr("height", cellSize).style("fill", function(d) { return colorScale(d.value); })
+			.on("mouseover", function(d){
+				d3.selectAll(".cell").filter(function(el) {return d.row == el.row || d.col == el.col; }).classed("cell-hover",true);
+				d3.selectAll(".rowLabel").classed("text-highlight",function(r,ri){ return ri==d.row;});
+				d3.selectAll(".colLabel").classed("text-highlight",function(c,ci){ return ci==d.col;});
+				
+				d3.select("#tooltip1").style("left", (d3.event.pageX+10) + "px").style("top", (d3.event.pageY-10) + "px")
+					.html("Host Information: "+
+						"<br> Superkingdom: "+ host2superkingdom[hostArr[d.col]] +
+						"<br> Phylum: "+ host2phylum[hostArr[d.col]] +
+						"<br> Class: "+ host2class[hostArr[d.col]] +
+						"<br> Order: "+ host2order[hostArr[d.col]] +
+						"<br> Family: "+ host2family[hostArr[d.col]] +
+						"<br> Genus: "+ host2genus[hostArr[d.col]] +
+						"<br> Species: "+ host2species[hostArr[d.col]] +
+						"<br> Organism: "+ host2organism[hostArr[d.col]] +
+						"<br> distance:"+d.value);  
+                d3.select("#tooltip1").classed("hidden", false);
+			})
+			.on("mouseout", function(d){
+				d3.selectAll(".cell").filter(function(el) {return d.row == el.row || d.col == el.col; }).classed("cell-hover",false);
+				d3.selectAll(".rowLabel").classed("text-highlight",false);
+				d3.selectAll(".colLabel").classed("text-highlight",false);
+				d3.select("#tooltip1").classed("hidden", true);
+			});
+      		
+      	var legend = svg.selectAll(".legend").data([minDist,minDist+0.1*gap,minDist+0.2*gap,minDist+0.3*gap,minDist+0.4*gap,minDist+0.5*gap,minDist+0.6*gap,minDist+0.7*gap,minDist+0.8*gap,minDist+0.9*gap,maxDist]).enter().append("g").attr("class", "legend");
+		legend.append("rect").attr("x", function(d, i) { return legendElementWidth * i-margin.left; }).attr("y", (cellSize*2) - margin.top)
+    		.attr("width", legendElementWidth).attr("height", cellSize)
+    		.style("fill", function(d, i) { return colors[i]; });
+    
+    	legend.append("text").text(function(d) { return d3.format(".2f")(d); }).style("text-anchor", "left")
+    		.attr("x", function(d, i) { return legendElementWidth * i-margin.left; }).attr("y", (cellSize*4)- margin.top);
+	}
+	
+	function getConsensusItem(pathArr, idx)
+	{
+		var node = {id:"root", cnt:0, children:{}};
+		for (var i = 0; i < pathArr.length; i++) 
+		{
+			var path = pathArr[i];
+			node.cnt ++;
+			item = path[idx];
+			if (!node.children[item]) node.children[item] = {id:item, cnt:0, children:{}};
+			node.children[item].cnt ++;
+		}
+		
+		var arr = Object.keys( node.children ).map(function ( key ) { return node.children[key].cnt; });
+		var ratio = 100;
+		if(math.sum(arr) > 0) ratio = Math.max.apply(Math,arr)*100/math.sum(arr);
+		maxItem = Object.keys(node.children)[arr.indexOf(Math.max.apply(Math,arr))];
+		return node.children[maxItem].id+" ("+String(Math.round(ratio * 100) / 100)+"%)";
+	}
+	
+	function convertToHierarchy(pathArr) {
+		var rootNode = {id:"root", cnt:0, children:{}};
+		for (var i = 0; i < pathArr.length; i++) {
+			var path = pathArr[i];
+			buildNodeRecursive(rootNode, path, 0);
+		}
+		return rootNode;
+	}
+	
+	function buildNodeRecursive(node, path, idx) {
+		if (idx < path.length) {
+			node.cnt ++;
+			item = path[idx];			
+			if (!node.children[item]) node.children[item] = {id:item, cnt:0, children:{}};
+			buildNodeRecursive(node.children[item], path, idx + 1);
+		}
+	}
+	
+	function getConsensusTaxonomy(currNode) {
+		if(currNode.children && Object.keys(currNode.children).length > 0) {
+			var arr = Object.keys( currNode.children ).map(function ( key ) { return currNode.children[key].cnt; });
+			//console.log(arr + " : " +arr.length);
+			//console.log(arr + " : " +Math.max.apply(Math,arr) +" : " + arr.indexOf(Math.max.apply(Math,arr)));
+			//console.log(Math.max.apply(Math,arr) + " / " +math.sum(arr));
+			
+			var ratio = 100;
+			if(math.sum(arr) > 0) ratio = Math.max.apply(Math,arr)*100/math.sum(arr);
+			
+			maxItem = Object.keys(currNode.children)[arr.indexOf(Math.max.apply(Math,arr))];
+			
+			returnArr = [currNode.children[maxItem].id+" ("+String(Math.round(ratio * 100) / 100)+"%)"];
+			returnArr = returnArr.concat(getConsensusTaxonomy(currNode.children[maxItem]));
+			return returnArr;
+		}
+		return [currNode.id+" (100%)"];
+	}
+	
+
+</script>
+
+</body>
+</html>

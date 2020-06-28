@@ -1,0 +1,353 @@
+WARNING: no hostTaxa file provided, creating a dummy one 
+Step 1: counting kmers for virus NC_019843.3.fasta
+ (Average time for counting kmers for one virus: 0.0406s) 
+ (ETR for counting kmers for viruses: 1.5411s) 
+Step 1: counting kmers for virus NC_004297.0.fasta
+ (Average time for counting kmers for one virus: 0.0379s) 
+ (ETR for counting kmers for viruses: 1.4033s) 
+Step 1: counting kmers for virus NC_001802.1.fasta
+ (Average time for counting kmers for one virus: 0.036s) 
+ (ETR for counting kmers for viruses: 1.2975s) 
+Step 1: counting kmers for virus NC_001722.1.fasta
+ (Average time for counting kmers for one virus: 0.0352s) 
+ (ETR for counting kmers for viruses: 1.2317s) 
+Step 1: counting kmers for virus NC_002023.0.fasta
+ (Average time for counting kmers for one virus: 0.0349s) 
+ (ETR for counting kmers for viruses: 1.1867s) 
+Step 1: counting kmers for virus NC_004718.3.fasta
+ (Average time for counting kmers for one virus: 0.0355s) 
+ (ETR for counting kmers for viruses: 1.1707s) 
+Step 1: counting kmers for virus NC_006998.1.fasta
+ (Average time for counting kmers for one virus: 0.0422s) 
+ (ETR for counting kmers for viruses: 1.3492s) 
+Step 1: counting kmers for virus AC_000017.1.fasta
+ (Average time for counting kmers for one virus: 0.042s) 
+ (ETR for counting kmers for viruses: 1.3007s) 
+Step 1: counting kmers for virus NC_003977.2.fasta
+ (Average time for counting kmers for one virus: 0.0404s) 
+ (ETR for counting kmers for viruses: 1.2109s) 
+Step 1: counting kmers for virus NC_012532.1.fasta
+ (Average time for counting kmers for one virus: 0.0396s) 
+ (ETR for counting kmers for viruses: 1.1487s) 
+Step 1: counting kmers for virus NC_045512.2.fasta
+ (Average time for counting kmers for one virus: 0.0396s) 
+ (ETR for counting kmers for viruses: 1.1098s) 
+Step 1: counting kmers for virus NC_038312.1.fasta
+ (Average time for counting kmers for one virus: 0.0389s) 
+ (ETR for counting kmers for viruses: 1.0502s) 
+Step 1: counting kmers for virus NC_002728.1.fasta
+ (Average time for counting kmers for one virus: 0.0386s) 
+ (ETR for counting kmers for viruses: 1.0043s) 
+Step 1: counting kmers for virus NC_006273.2.fasta
+ (Average time for counting kmers for one virus: 0.0423s) 
+ (ETR for counting kmers for viruses: 1.0577s) 
+Step 1: counting kmers for virus NC_001803.1.fasta
+ (Average time for counting kmers for one virus: 0.0416s) 
+ (ETR for counting kmers for viruses: 0.9993s) 
+Step 1: counting kmers for virus NC_009333.1.fasta
+ (Average time for counting kmers for one virus: 0.0434s) 
+ (ETR for counting kmers for viruses: 0.9982s) 
+Step 1: counting kmers for virus NC_001348.1.fasta
+ (Average time for counting kmers for one virus: 0.0446s) 
+ (ETR for counting kmers for viruses: 0.9808s) 
+Step 1: counting kmers for virus NC_001798.2.fasta
+ (Average time for counting kmers for one virus: 0.046s) 
+ (ETR for counting kmers for viruses: 0.9661s) 
+Step 1: counting kmers for virus NC_001538.1.fasta
+ (Average time for counting kmers for one virus: 0.0451s) 
+ (ETR for counting kmers for viruses: 0.9025s) 
+Step 1: counting kmers for virus NC_001355.1.fasta
+ (Average time for counting kmers for one virus: 0.0444s) 
+ (ETR for counting kmers for viruses: 0.8439s) 
+Step 1: counting kmers for virus NC_001436.1.fasta
+ (Average time for counting kmers for one virus: 0.0439s) 
+ (ETR for counting kmers for viruses: 0.7908s) 
+Step 1: counting kmers for virus NC_005219.1.fasta
+ (Average time for counting kmers for one virus: 0.0434s) 
+ (ETR for counting kmers for viruses: 0.737s) 
+Step 1: counting kmers for virus NC_001430.1.fasta
+ (Average time for counting kmers for one virus: 0.0428s) 
+ (ETR for counting kmers for viruses: 0.6854s) 
+Step 1: counting kmers for virus NC_001906.3.fasta
+ (Average time for counting kmers for one virus: 0.0426s) 
+ (ETR for counting kmers for viruses: 0.6383s) 
+Step 1: counting kmers for virus NC_038311.1.fasta
+ (Average time for counting kmers for one virus: 0.0421s) 
+ (ETR for counting kmers for viruses: 0.5892s) 
+Step 1: counting kmers for virus NC_010415.1.fasta
+ (Average time for counting kmers for one virus: 0.0418s) 
+ (ETR for counting kmers for viruses: 0.5431s) 
+Step 1: counting kmers for virus NC_001731.1.fasta
+ (Average time for counting kmers for one virus: 0.0431s) 
+ (ETR for counting kmers for viruses: 0.5176s) 
+Step 1: counting kmers for virus JX276378.1.fasta
+ (Average time for counting kmers for one virus: 0.0427s) 
+ (ETR for counting kmers for viruses: 0.4696s) 
+Step 1: counting kmers for virus NC_006307.0.fasta
+ (Average time for counting kmers for one virus: 0.0423s) 
+ (ETR for counting kmers for viruses: 0.4234s) 
+Step 1: counting kmers for virus NC_001806.2.fasta
+ (Average time for counting kmers for one virus: 0.0433s) 
+ (ETR for counting kmers for viruses: 0.3897s) 
+Step 1: counting kmers for virus NC_001796.2.fasta
+ (Average time for counting kmers for one virus: 0.043s) 
+ (ETR for counting kmers for viruses: 0.3437s) 
+Step 1: counting kmers for virus NC_001611.1.fasta
+ (Average time for counting kmers for one virus: 0.0441s) 
+ (ETR for counting kmers for viruses: 0.3085s) 
+Step 1: counting kmers for virus NC_003443.1.fasta
+ (Average time for counting kmers for one virus: 0.0438s) 
+ (ETR for counting kmers for viruses: 0.2626s) 
+Step 1: counting kmers for virus NC_001664.4.fasta
+ (Average time for counting kmers for one virus: 0.0446s) 
+ (ETR for counting kmers for viruses: 0.223s) 
+Step 1: counting kmers for virus NC_002549.1.fasta
+ (Average time for counting kmers for one virus: 0.0443s) 
+ (ETR for counting kmers for viruses: 0.1774s) 
+Step 1: counting kmers for virus NC_004102.1.fasta
+ (Average time for counting kmers for one virus: 0.044s) 
+ (ETR for counting kmers for viruses: 0.132s) 
+Step 1: counting kmers for virus NC_002204.0.fasta
+ (Average time for counting kmers for one virus: 0.0437s) 
+ (ETR for counting kmers for viruses: 0.0875s) 
+Step 1: counting kmers for virus NC_007605.1.fasta
+ (Average time for counting kmers for one virus: 0.0446s) 
+ (ETR for counting kmers for viruses: 0.0446s) 
+Step 1: counting kmers for virus NC_004162.2.fasta
+ (Average time for counting kmers for one virus: 0.0443s) 
+ (ETR for counting kmers for viruses: 0.0s) 
+Step 1: counting kmers for host NC_019843.3.fasta
+ (Average time for counting kmers for one host: 0.039s) 
+ (ETR for counting kmers for hosts: 1.4823s) 
+Step 1: counting kmers for host NC_004297.0.fasta
+ (Average time for counting kmers for one host: 0.0354s) 
+ (ETR for counting kmers for hosts: 1.3109s) 
+Step 1: counting kmers for host NC_001802.1.fasta
+ (Average time for counting kmers for one host: 0.0341s) 
+ (ETR for counting kmers for hosts: 1.2265s) 
+Step 1: counting kmers for host NC_001722.1.fasta
+ (Average time for counting kmers for one host: 0.0338s) 
+ (ETR for counting kmers for hosts: 1.1821s) 
+Step 1: counting kmers for host NC_002023.0.fasta
+ (Average time for counting kmers for one host: 0.0338s) 
+ (ETR for counting kmers for hosts: 1.1506s) 
+Step 1: counting kmers for host NC_004718.3.fasta
+ (Average time for counting kmers for one host: 0.0346s) 
+ (ETR for counting kmers for hosts: 1.1426s) 
+Step 1: counting kmers for host NC_006998.1.fasta
+ (Average time for counting kmers for one host: 0.0464s) 
+ (ETR for counting kmers for hosts: 1.4841s) 
+Step 1: counting kmers for host AC_000017.1.fasta
+ (Average time for counting kmers for one host: 0.0469s) 
+ (ETR for counting kmers for hosts: 1.4538s) 
+Step 1: counting kmers for host NC_003977.2.fasta
+ (Average time for counting kmers for one host: 0.0456s) 
+ (ETR for counting kmers for hosts: 1.3676s) 
+Step 1: counting kmers for host NC_012532.1.fasta
+ (Average time for counting kmers for one host: 0.0452s) 
+ (ETR for counting kmers for hosts: 1.31s) 
+Step 1: counting kmers for host NC_045512.2.fasta
+ (Average time for counting kmers for one host: 0.0455s) 
+ (ETR for counting kmers for hosts: 1.2726s) 
+Step 1: counting kmers for host NC_038312.1.fasta
+ (Average time for counting kmers for one host: 0.0456s) 
+ (ETR for counting kmers for hosts: 1.2308s) 
+Step 1: counting kmers for host NC_002728.1.fasta
+ (Average time for counting kmers for one host: 0.0455s) 
+ (ETR for counting kmers for hosts: 1.1818s) 
+Step 1: counting kmers for host NC_006273.2.fasta
+ (Average time for counting kmers for one host: 0.0493s) 
+ (ETR for counting kmers for hosts: 1.2322s) 
+Step 1: counting kmers for host NC_001803.1.fasta
+ (Average time for counting kmers for one host: 0.0482s) 
+ (ETR for counting kmers for hosts: 1.1564s) 
+Step 1: counting kmers for host NC_009333.1.fasta
+ (Average time for counting kmers for one host: 0.0494s) 
+ (ETR for counting kmers for hosts: 1.1352s) 
+Step 1: counting kmers for host NC_001348.1.fasta
+ (Average time for counting kmers for one host: 0.0503s) 
+ (ETR for counting kmers for hosts: 1.1064s) 
+Step 1: counting kmers for host NC_001798.2.fasta
+ (Average time for counting kmers for one host: 0.0514s) 
+ (ETR for counting kmers for hosts: 1.0798s) 
+Step 1: counting kmers for host NC_001538.1.fasta
+ (Average time for counting kmers for one host: 0.0503s) 
+ (ETR for counting kmers for hosts: 1.005s) 
+Step 1: counting kmers for host NC_001355.1.fasta
+ (Average time for counting kmers for one host: 0.0493s) 
+ (ETR for counting kmers for hosts: 0.9367s) 
+Step 1: counting kmers for host NC_001436.1.fasta
+ (Average time for counting kmers for one host: 0.0487s) 
+ (ETR for counting kmers for hosts: 0.8771s) 
+Step 1: counting kmers for host NC_005219.1.fasta
+ (Average time for counting kmers for one host: 0.0478s) 
+ (ETR for counting kmers for hosts: 0.8131s) 
+Step 1: counting kmers for host NC_001430.1.fasta
+ (Average time for counting kmers for one host: 0.0471s) 
+ (ETR for counting kmers for hosts: 0.7538s) 
+Step 1: counting kmers for host NC_001906.3.fasta
+ (Average time for counting kmers for one host: 0.0467s) 
+ (ETR for counting kmers for hosts: 0.6998s) 
+Step 1: counting kmers for host NC_038311.1.fasta
+ (Average time for counting kmers for one host: 0.046s) 
+ (ETR for counting kmers for hosts: 0.6445s) 
+Step 1: counting kmers for host NC_010415.1.fasta
+ (Average time for counting kmers for one host: 0.0455s) 
+ (ETR for counting kmers for hosts: 0.5913s) 
+Step 1: counting kmers for host NC_001731.1.fasta
+ (Average time for counting kmers for one host: 0.0467s) 
+ (ETR for counting kmers for hosts: 0.561s) 
+Step 1: counting kmers for host JX276378.1.fasta
+ (Average time for counting kmers for one host: 0.0462s) 
+ (ETR for counting kmers for hosts: 0.5081s) 
+Step 1: counting kmers for host NC_006307.0.fasta
+ (Average time for counting kmers for one host: 0.0457s) 
+ (ETR for counting kmers for hosts: 0.4571s) 
+Step 1: counting kmers for host NC_001806.2.fasta
+ (Average time for counting kmers for one host: 0.0465s) 
+ (ETR for counting kmers for hosts: 0.4188s) 
+Step 1: counting kmers for host NC_001796.2.fasta
+ (Average time for counting kmers for one host: 0.0461s) 
+ (ETR for counting kmers for hosts: 0.3687s) 
+Step 1: counting kmers for host NC_001611.1.fasta
+ (Average time for counting kmers for one host: 0.0471s) 
+ (ETR for counting kmers for hosts: 0.3296s) 
+Step 1: counting kmers for host NC_003443.1.fasta
+ (Average time for counting kmers for one host: 0.0467s) 
+ (ETR for counting kmers for hosts: 0.2802s) 
+Step 1: counting kmers for host NC_001664.4.fasta
+ (Average time for counting kmers for one host: 0.0475s) 
+ (ETR for counting kmers for hosts: 0.2377s) 
+Step 1: counting kmers for host NC_002549.1.fasta
+ (Average time for counting kmers for one host: 0.0472s) 
+ (ETR for counting kmers for hosts: 0.1889s) 
+Step 1: counting kmers for host NC_004102.1.fasta
+ (Average time for counting kmers for one host: 0.0468s) 
+ (ETR for counting kmers for hosts: 0.1405s) 
+Step 1: counting kmers for host NC_002204.0.fasta
+ (Average time for counting kmers for one host: 0.0465s) 
+ (ETR for counting kmers for hosts: 0.0929s) 
+Step 1: counting kmers for host NC_007605.1.fasta
+ (Average time for counting kmers for one host: 0.0472s) 
+ (ETR for counting kmers for hosts: 0.0472s) 
+Step 1: counting kmers for host NC_004162.2.fasta
+ (Average time for counting kmers for one host: 0.0469s) 
+ (ETR for counting kmers for hosts: 0.0s) 
+Step 2: compute distance/dissimilarity measures 
+ dissimilarity b/w host NC_019843.3.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0175s) 
+   (ETR for computing dissimilarities for virus-host pairs: 25.9945s) 
+ dissimilarity b/w host NC_004297.0.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0296s) 
+   (ETR for computing dissimilarities for virus-host pairs: 42.745s) 
+ dissimilarity b/w host NC_001802.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0335s) 
+   (ETR for computing dissimilarities for virus-host pairs: 47.0115s) 
+ dissimilarity b/w host NC_001722.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0354s) 
+   (ETR for computing dissimilarities for virus-host pairs: 48.3534s) 
+ dissimilarity b/w host NC_002023.0.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0366s) 
+   (ETR for computing dissimilarities for virus-host pairs: 48.5043s) 
+ dissimilarity b/w host NC_004718.3.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0373s) 
+   (ETR for computing dissimilarities for virus-host pairs: 48.044s) 
+ dissimilarity b/w host NC_006998.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0379s) 
+   (ETR for computing dissimilarities for virus-host pairs: 47.2998s) 
+ dissimilarity b/w host AC_000017.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0384s) 
+   (ETR for computing dissimilarities for virus-host pairs: 46.3662s) 
+ dissimilarity b/w host NC_003977.2.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0387s) 
+   (ETR for computing dissimilarities for virus-host pairs: 45.2804s) 
+ dissimilarity b/w host NC_012532.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0389s) 
+   (ETR for computing dissimilarities for virus-host pairs: 43.9766s) 
+ dissimilarity b/w host NC_045512.2.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0391s) 
+   (ETR for computing dissimilarities for virus-host pairs: 42.7221s) 
+ dissimilarity b/w host NC_038312.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0393s) 
+   (ETR for computing dissimilarities for virus-host pairs: 41.4097s) 
+ dissimilarity b/w host NC_002728.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0395s) 
+   (ETR for computing dissimilarities for virus-host pairs: 40.0165s) 
+ dissimilarity b/w host NC_006273.2.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0396s) 
+   (ETR for computing dissimilarities for virus-host pairs: 38.6131s) 
+ dissimilarity b/w host NC_001803.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0398s) 
+   (ETR for computing dissimilarities for virus-host pairs: 37.2111s) 
+ dissimilarity b/w host NC_009333.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0399s) 
+   (ETR for computing dissimilarities for virus-host pairs: 35.7767s) 
+ dissimilarity b/w host NC_001348.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.04s) 
+   (ETR for computing dissimilarities for virus-host pairs: 34.3607s) 
+ dissimilarity b/w host NC_001798.2.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0402s) 
+   (ETR for computing dissimilarities for virus-host pairs: 32.9245s) 
+ dissimilarity b/w host NC_001538.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0404s) 
+   (ETR for computing dissimilarities for virus-host pairs: 31.5037s) 
+ dissimilarity b/w host NC_001355.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0404s) 
+   (ETR for computing dissimilarities for virus-host pairs: 29.959s) 
+ dissimilarity b/w host NC_001436.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0405s) 
+   (ETR for computing dissimilarities for virus-host pairs: 28.4363s) 
+ dissimilarity b/w host NC_005219.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0406s) 
+   (ETR for computing dissimilarities for virus-host pairs: 26.8995s) 
+ dissimilarity b/w host NC_001430.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0406s) 
+   (ETR for computing dissimilarities for virus-host pairs: 25.3324s) 
+ dissimilarity b/w host NC_001906.3.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0407s) 
+   (ETR for computing dissimilarities for virus-host pairs: 23.7959s) 
+ dissimilarity b/w host NC_038311.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0408s) 
+   (ETR for computing dissimilarities for virus-host pairs: 22.2514s) 
+ dissimilarity b/w host NC_010415.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0408s) 
+   (ETR for computing dissimilarities for virus-host pairs: 20.6757s) 
+ dissimilarity b/w host NC_001731.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0408s) 
+   (ETR for computing dissimilarities for virus-host pairs: 19.1024s) 
+ dissimilarity b/w host JX276378.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0409s) 
+   (ETR for computing dissimilarities for virus-host pairs: 17.534s) 
+ dissimilarity b/w host NC_006307.0.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0409s) 
+   (ETR for computing dissimilarities for virus-host pairs: 15.9498s) 
+ dissimilarity b/w host NC_001806.2.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0409s) 
+   (ETR for computing dissimilarities for virus-host pairs: 14.3673s) 
+ dissimilarity b/w host NC_001796.2.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.041s) 
+   (ETR for computing dissimilarities for virus-host pairs: 12.7953s) 
+ dissimilarity b/w host NC_001611.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.041s) 
+   (ETR for computing dissimilarities for virus-host pairs: 11.2065s) 
+ dissimilarity b/w host NC_003443.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0411s) 
+   (ETR for computing dissimilarities for virus-host pairs: 9.6162s) 
+ dissimilarity b/w host NC_001664.4.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0411s) 
+   (ETR for computing dissimilarities for virus-host pairs: 8.0228s) 
+ dissimilarity b/w host NC_002549.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0412s) 
+   (ETR for computing dissimilarities for virus-host pairs: 6.4253s) 
+ dissimilarity b/w host NC_004102.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0412s) 
+   (ETR for computing dissimilarities for virus-host pairs: 4.8259s) 
+ dissimilarity b/w host NC_002204.0.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0413s) 
+   (ETR for computing dissimilarities for virus-host pairs: 3.2184s) 
+ dissimilarity b/w host NC_007605.1.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0413s) 
+   (ETR for computing dissimilarities for virus-host pairs: 1.6099s) 
+ dissimilarity b/w host NC_004162.2.fasta - all viruses 
+   (Average time for computing dissimilarities for one virus-host pair: 0.0413s) 
+   (ETR for computing dissimilarities for virus-host pairs: 0.0s) 
