@@ -28,11 +28,3 @@ The results in the paper above can be reproduced by the follwing MATLAB scripts:
 * `run.m`
 * `./Experiments/novel_drugs_prediction.m`
 * `./Experiments/coronavirus_pred.m`
-
-
-
-[4]
-
-[5]
-
-[6]
