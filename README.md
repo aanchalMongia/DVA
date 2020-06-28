@@ -4,7 +4,7 @@
 Aanchal Mongia (IIIT Delhi), Emilie Chouzenoux (OPIS, Inria Saclay), Angshul Majumdar (IIIT Delhi)
 
 
-TThis repository (DVA) contains:
+This repository (DVA) contains:
 *  DVA (Drug virus association database)
 * Collection of matrix completion based computational techniques to predict anti-viral drug prediction for viruses
 
