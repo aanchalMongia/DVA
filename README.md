@@ -4,7 +4,7 @@
 Aanchal Mongia (IIIT Delhi), Emilie Chouzenoux (OPIS, Inria Saclay), Angshul Majumdar (IIIT Delhi)
 
 
-TThis repository (DVA) contains::
+TThis repository (DVA) contains:
 *  DVA (Drug virus association database)
 * Collection of matrix completion based computational techniques to predict anti-viral drug prediction for viruses
 
@@ -23,7 +23,7 @@ These are:
 * Graph regularized matrix completion 
 * Graph regularized binary matrix completion 
 
-The results in the paper above can be reproduced by the follwing MATLAB scripts:
+The results in the paper above can be reproduced by the following MATLAB scripts:
 
 * `run.m`
 * `./Experiments/novel_drugs_prediction.m`
