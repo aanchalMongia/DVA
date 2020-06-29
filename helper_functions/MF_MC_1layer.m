@@ -1,4 +1,4 @@
-function [ X, U, V] = MF_MC_2_1for(y,M,sizeX,rankr   )
+function [ X, U, V] = MF_MC_1layer(y,M,sizeX,rankr   )
 
 % Matrix Completion via Factorization
 % min nuclear-norm(X) subject to ||y - M(X)||_2<err
