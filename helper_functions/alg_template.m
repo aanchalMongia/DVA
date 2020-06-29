@@ -6,9 +6,9 @@ function Yhat=alg_template(Y,predictionMethod,test_ind,left_out)
 %  Y:                     interaction matrix
 %  predictionMethod:      method to use for prediction
 %  test_indices:          indices of the test set instances
-%  left_out:              in case of S1: left_out = test_indices
-%                         in case of S2: left_out = left out drugs
-%                         in case of S3: left_out = left out targets
+%  left_out:              in case of CV1: left_out = test_indices
+%                         in case of CV2: left_out = left out virus
+%                         in case of CV3: left_out = left out drugs
 %
 % OUTPUT:
 %  Yhat:                  prediction scores matrix
@@ -359,13 +359,13 @@ function [A,B]=alg_grmf_predict(Y,A,B,Ld,Lt,lambda_l,lambda_d,lambda_t,num_iter,
     
 end
 function [S,p]=preprocess_PNN(S,p)
-%preprocess_PNN sparsifies S by keeping, for each drug/target, the "p"
+%preprocess_PNN sparsifies S by keeping, for each drug/virus, the "p"
 % nearest neighbors (NNs) and discarding the rest. 
 
     NN_mat = zeros(size(S));
     for j=1:length(NN_mat)
         [~,indx] = sort(S(j,:),'descend');
-        indx = indx(1:p+1);     % keep drug/target j and its "p" NNs
+        indx = indx(1:p+1);     % keep drug/virus j and its "p" NNs
         NN_mat(j,indx) = 1;
     end
     NN_mat = (NN_mat+NN_mat')/2;
