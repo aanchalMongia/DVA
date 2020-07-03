@@ -23,9 +23,6 @@ getParameters(predictionMethod,3)
        y2=Y;
        y2( drugs_singleAssociation_indices ,:) = 0;
        
-       %y2b=Y; y2b(:,other_drugs_indces)=0;
-       %test_indb=find(y2b==1);
-       
        M = ones(size(Y)); 
        M( drugs_singleAssociation_indices,:)=0;
        test_ind=find(M==0);
