@@ -1,5 +1,5 @@
 clear all
-predictionMethod = 'dmf'%'gr1bmc_ppxa'%'mc 'dmf'%'mf' %'grmc_admm' %'grmf' 
+predictionMethod = 'gr1bmc_ppxa'%'gr1bmc_ppxa'%'mc 'dmf'%'mf' %'grmc_admm' %'grmf' 
 
 % read virus-drug assocaitions
 load('data_processed/virus_drug_association.mat')

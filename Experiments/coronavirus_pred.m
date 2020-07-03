@@ -1,6 +1,6 @@
 clear all
 
-predictionMethod = 'grmc_admm'
+predictionMethod = 'grmf'
 
 %----add dependencies to path----
 addpath(genpath('../helper_functions'));
