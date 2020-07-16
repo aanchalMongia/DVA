@@ -1,5 +1,5 @@
 # DVA
-**"[A computational approach to aid clinicians in selecting anti-viral drugs for COVID-19 trials](https://hal.archives-ouvertes.fr/hal-02888874)"**
+**"[A computational approach to aid clinicians in selecting anti-viral drugs for COVID-19 trials](https://arxiv.org/abs/2007.01902)"**
 
 
 Aanchal Mongia (IIIT Delhi), Sanjay Kr. Saha (IPGMER, Calcutta), Emilie Chouzenoux (OPIS, Inria Saclay), Angshul Majumdar (IIIT Delhi)
@@ -57,16 +57,11 @@ The results in the paper above can be reproduced by the following MATLAB scripts
  
  # Cite us:
  ```
- @unpublished{mongia:hal-02888874,
-  TITLE = {{A computational approach to aid clinicians in selecting anti-viral drugs for COVID-19 trials}},
-  AUTHOR = {Mongia, Aanchal and Saha, Sanjay Kr and Chouzenoux, Emilie and Majumdar, Angshul},
-  URL = {https://hal.archives-ouvertes.fr/hal-02888874},
-  NOTE = {working paper or preprint},
-  YEAR = {2020},
-  MONTH = Jul,
-  PDF = {https://hal.archives-ouvertes.fr/hal-02888874/file/DVA_merged.pdf},
-  HAL_ID = {hal-02888874},
-  HAL_VERSION = {v1},
+@article{mongia2020computational,
+  title={A computational approach to aid clinicians in selecting anti-viral drugs for COVID-19 trials},
+  author={Mongia, Aanchal and Saha, Sanjay Kr and Chouzenoux, Emilie and Majumdar, Angshul},
+  journal={arXiv preprint arXiv:2007.01902},
+  year={2020}
 }
 ```
  
