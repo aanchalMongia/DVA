@@ -4,6 +4,8 @@
 
 Aanchal Mongia (IIIT Delhi), Sanjay Kr. Saha (IPGMER, Calcutta), Emilie Chouzenoux (OPIS, Inria Saclay), Angshul Majumdar (IIIT Delhi)
 
+User-friendly prediction tool available at:[ http://dva.salsa.iiitd.edu.in/](http://dva.salsa.iiitd.edu.in/)
+
 
 This repository (DVA) contains:
 *  DVA (Drug virus association database)
